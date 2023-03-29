@@ -41,7 +41,7 @@ i.     Incluya los atributos de esta clase y establezca la visibilidad adecuada 
 
 ii.     Programe un método constructor que reciba los datos necesarios para crear un Pokémon. El método debe verificar el tipo y valor de cada uno de los parámetros y lanzar la excepción correspondiente cuando no se cumplan los requisitos. El método constructor debe asegurarse de que el atributo ID es una identificación nueva no tomada por otros Pokémons. Así mismo, programe también un método destructor que se encarge de eliminar la instancia de Pokemon de la variable lista de IDs global.
 
-iii.     Programe un método que mejor corresponda para imprimir objetos de tipo Pokemon según el siguiente ejemplo: “Pokemon ID 8 with name Bulbasaur has as weapon PUNCH and health 87.”
+iii.     Programe un método que mejor corresponda para imprimir objetos de tipo Pokemon según el siguiente ejemplo: “Pokemon ID 8 with name Bulbasaur has as arma PUNCH and health 87.”
 
 iv.     Programe los métodos setters y getters para la clase en función de lo que necesite. Si no necesita algún o ningún getter y/o setter, argumente por qué en un comentario dentro del módulo.
 
@@ -59,3 +59,87 @@ Para ayudar en el desarrollo de este ejercicio, se le hace entrega de un UML par
 
 
 Se facilitan también los archivos vacíos dónde deberán estar implementadas las clases que se piden y que tienen que ser completadas por el alumno. En dichas clases, están ya añadidos los casos de prueba de cada una de ellas."""
+
+# Codigo
+
+from enum import Enum
+
+class Pokemon(Enum):
+
+    Puñetazo = 1
+
+    Patada = 2
+
+    Codazo = 3
+
+    Cabezazo = 4
+
+class Pokemon:
+        def __init__(self, id, nombre, arma, salud, ataque, defensa):
+            self.id = id
+            self.nombre = nombre
+            self.arma = arma
+            self.salud = salud
+            self.ataque = ataque
+            self.defensa = defensa
+
+        def __del__(self):
+            pass
+
+        def __str__(self):
+            return "Pokemon ID {} con nombre {} tiene como arma {} y salud {}".format(self.id, self.nombre, self.arma, self.salud)
+
+        def set_id(self, id):
+            self.id = id
+
+        def get_id(self):
+            return self.id
+
+        def set_nombre(self, nombre):
+            self.nombre = nombre
+
+        def get_nombre(self):
+            return self.nombre
+
+        def set_arma(self, arma):
+            self.arma = arma
+
+        def get_arma(self):
+            return self.arma
+
+        def set_salud(self, salud):
+            self.salud = salud
+
+        def get_salud(self):
+            return self.salud
+
+        def set_ataque(self, ataque):
+            self.ataque = ataque
+
+        def get_ataque(self):
+            return self.ataque
+
+        def set_defensa(self, defensa):
+            self.defensa = defensa
+
+        def get_defensa(self):
+            return self.defensa
+
+        def is_alive(self):
+            if self.salud > 0:
+                return True
+            else:
+                return False
+
+        def fight_ataque(self, pokemon_to_ataque):
+            if self.is_alive() == True:
+                return pokemon_to_ataque.fight_defensa(self.ataque)
+            else:
+                return False
+
+        def fight_defensa(self, points_of_damage):
+            if self.defensa > points_of_damage:
+                return False
+            else:
+                self.salud = self.salud - (points_of_damage - self.defensa)
+                return True
