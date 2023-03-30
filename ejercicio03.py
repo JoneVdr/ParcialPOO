@@ -29,3 +29,9 @@ Recuerde utilizar las clases implementadas tanto en el ejercicio 4 como en el ej
 
 
 El diagrama de flujo de este módulo principal le ha sido proporcionado a modo de guía."""
+
+#Código
+
+import csv
+import random
+from pokemon import Pokemon
