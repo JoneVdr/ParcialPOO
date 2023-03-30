@@ -29,3 +29,39 @@ Reutilice tanto código como sea posible del ejercicio 4 para hacer esta extensi
 
 No es necesario implementar el docString correspondiente a las funciones y métodos desarrollados, aunque se recomienda hacerlo para facilitar la comprensión por parte del estudiante."""
 
+#Codigo
+
+from ejercicio01 import Pokemon
+from ejercicio01 import Pokemon(Enum)
+
+class EarthPokemon(Pokemon):
+    def __init__(self, id, nombre, arma, salud, ataque, defensa):
+        super().__init__(id, nombre, arma, salud, ataque, defensa)
+        self.defensa = random.randint(11, 20)
+
+class WaterPokemon(Pokemon):
+    def __init__(self, id, nombre, arma, salud, ataque, defensa):
+        super().__init__(id, nombre, arma, salud, ataque, defensa)
+        self.ataque = random.randint(11, 20)
+
+class AirPokemon(Pokemon):
+    def __init__(self, id, nombre, arma, salud, ataque, defensa):
+        super().__init__(id, nombre, arma, salud, ataque, defensa)
+
+    def fight_defense(self, int points_of_damage):
+        if random.randint(0, 1) == 0:
+            return False
+        else:
+            self.salud = self.salud - (points_of_damage - self.defensa)
+            return True
+
+class ElectricPokemon(Pokemon):
+    def __init__(self, id, nombre, arma, salud, ataque, defensa):
+        super().__init__(id, nombre, arma, salud, ataque, defensa)
+
+    def fight_attack(self):
+        if random.randint(0, 1) == 0:
+            return self.ataque * 2
+        else:
+            return self.ataque
+
